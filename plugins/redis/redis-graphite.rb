@@ -20,7 +20,6 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
     :short => "-h HOST",
     :long => "--host HOST",
     :description => "Redis Host to connect to",
-    :required => true,
     :default  => '127.0.0.1'
 
   option :port,
@@ -28,7 +27,6 @@ class Redis2Graphite < Sensu::Plugin::Metric::CLI::Graphite
     :long => "--port PORT",
     :description => "Redis Port to connect to",
     :proc => proc {|p| p.to_i },
-    :required => true,
     :default => 6379
 
   option :scheme,
