@@ -9,7 +9,6 @@
     "ubuntu": ">= 0.0.0"
   },
   "dependencies": {
-    "git": ">= 0.0.0"
   },
   "recommendations": {
   },
