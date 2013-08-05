@@ -18,6 +18,7 @@
 #
 
 package "git"
+gem_package "sensu-plugin"
 
 git node[:chef_sensu_community_plugins][:path] do
   repository node[:chef_sensu_community_plugins][:repository]
