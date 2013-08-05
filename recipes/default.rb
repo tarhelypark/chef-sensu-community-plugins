@@ -17,18 +17,26 @@
 # limitations under the License.
 #
 
-include_recipe "git"
+package "git"
 
-git "/opt/sensu-community-plugins" do
-  repository "https://github.com/sensu/sensu-community-plugins.git"
-  reference "1860721b049d32397f4605bff93c049c049f9f7e"
+git node[:chef_sensu_community_plugins][:path] do
+  repository node[:chef_sensu_community_plugins][:repository]
+  reference node[:chef_sensu_community_plugins][:reference]
   action :sync
 end
 
 link "#{node['sensu']['directory']}/plugins/sensu-community-plugins" do
-    to "/opt/sensu-community-plugins/plugins"
+    to "#{node[:chef_sensu_community_plugins][:path]}/plugins"
 end
 
 link "#{node['sensu']['directory']}/handlers/sensu-community-plugins" do
-    to "/opt/sensu-community-plugins/handlers"
+    to "#{node[:chef_sensu_community_plugins][:path]}/handlers"
+end
+
+link "#{node['sensu']['directory']}/mutators/sensu-community-plugins" do
+    to "#{node[:chef_sensu_community_plugins][:path]}/mutators"
+end
+
+link "#{node['sensu']['directory']}/extensions/sensu-community-plugins" do
+    to "#{node[:chef_sensu_community_plugins][:path]}/extensions"
 end
